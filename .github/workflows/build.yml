@@ -40,7 +40,6 @@ jobs:
           files: ./dist/bluactions-*-setup.exe
 
   build-macos:
-    if: ${{ false }}
     runs-on: macos-latest
 
     steps:
@@ -71,7 +70,6 @@ jobs:
           files: ./dist/bluactions-*.dmg
 
   build-linux:
-    if: ${{ false }}
     runs-on: ubuntu-latest
 
     steps:

@@ -15,7 +15,7 @@ Useful for controlling your PC using automations, for example using Home Assista
 
 ## Getting started
 
-The application only works on Windows for now, support for other platforms is coming in the future!
+The application works on Windows, macOS, and Linux. macOS and Linux are not as well tested, please open an issue if you run into any problems on those platforms!
 
 1. Download BluActions from [Releases](../../releases/).
 2. Open the downloaded file to install
@@ -59,6 +59,24 @@ BluActions will for the most part live in your system tray. Right-click it to br
 ## Contributing
 
 Contributions are very welcome! Make sure to follow the guidelines laid out in [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Troubleshooting
+
+### `shutdown` on macOS and Linux
+
+This command works as normal on Windows, however on macOS and Linux it requires `sudo` privileges. If you want to use these commands in BluActions, you have to configure `sudo` to allow running the command without a password.
+
+Please note that this also allows any other script/program to execute `shutdown` without a password, so do this at your own risk.
+
+This can be done by running `sudo visudo` and adding the following line (replace `<username>` with your username):
+
+```
+<username> ALL=(ALL) NOPASSWD: /sbin/shutdown
+```
+
+### `lock` on macOS
+
+There isn't an official command to trigger "locking" the screen on macOS, so BluActions works around this by triggering your screen saver using `ScreenSaverEngine` instead. To make this actually lock the screen, you also have to enable the option to require a password immediately after the screen saver starts in `System Preferences -> Security & Privacy -> General`.
 
 ## Support
 

@@ -15,16 +15,32 @@ export const hash = (str: string) =>
 export const random = (len: number) =>
   crypto.randomBytes(len / 2).toString('hex')
 
+interface ExecSuccessResult {
+  success: true
+  output: string
+}
+
+interface ExecErrorResult {
+  success: false
+  error: string
+}
+
 export async function execAsync(
   cmd: string,
   options?: ExecOptions
-): Promise<string> {
-  return new Promise((resolve, reject) => {
+): Promise<ExecSuccessResult | ExecErrorResult> {
+  return new Promise(resolve => {
     exec(cmd, options, (error, stdout) => {
       if (error) {
-        reject(error)
+        resolve({
+          success: false,
+          error: error.message
+        })
       } else {
-        resolve(stdout.toString())
+        resolve({
+          success: true,
+          output: stdout.toString()
+        })
       }
     })
   })

@@ -5,20 +5,20 @@ import {
   PlatformCommands
 } from '../helpers.js'
 
-export const id = 'shutdown'
+export const id = 'sleep'
 
 export const metadata: HandlerMetadata = {
-  name: 'Shutdown',
-  description: 'Shut down your computer.',
-  icon: 'power_settings_new'
+  name: 'Sleep',
+  description: 'Put your computer to sleep.',
+  icon: 'bedtime'
 }
 
 export const hasActions = false
 
 const commands: PlatformCommands = {
-  [Platform.WINDOWS]: 'shutdown /s /t 0 /f',
-  [Platform.MACOS]: 'sudo -n /sbin/shutdown -h now',
-  [Platform.LINUX]: 'sudo -n /sbin/shutdown -h now'
+  [Platform.WINDOWS]: `rundll32.exe powrprof.dll,SetSuspendState 0,1,0`,
+  [Platform.MACOS]: `pmset sleepnow`,
+  [Platform.LINUX]: `systemctl suspend`
 }
 
 export const handle: HandlerFunction = (_, res) =>

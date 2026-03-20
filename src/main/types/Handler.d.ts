@@ -27,6 +27,9 @@ interface HandlerAction {
   handle: HandlerFunction
 }
 
-type HandlerFunction = (req: Request, res: Response) => Promise<void>
+type HandlerFunction = (
+  req: Request,
+  res: Response
+) => Promise<unknown> | unknown
 
 export type Handler = HandlerWithoutActions | HandlerWithActions
