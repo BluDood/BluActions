@@ -87,6 +87,10 @@
   gap: 8px;
 }
 
+.actions .list .action .description {
+  margin-right: 60px;
+}
+
 .actions .list .action .toggle {
   position: absolute;
   top: 15px;
