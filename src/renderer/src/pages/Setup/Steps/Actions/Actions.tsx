@@ -32,7 +32,7 @@ const Actions: React.FC<ActionsProps> = ({ onStepComplete }) => {
 
         setEnabledHandlers(handlers)
       } else {
-        const defaultHandlers = ['lock', 'ping']
+        const defaultHandlers = ['lock']
         setEnabledHandlers(defaultHandlers)
         saveEnabledHandlers(defaultHandlers)
       }
