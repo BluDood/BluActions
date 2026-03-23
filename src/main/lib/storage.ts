@@ -112,7 +112,7 @@ export async function setStorageValue(
   }
 }
 
-export async function isHandlerEnabled(handlerId: string) {
+export function isHandlerEnabled(handlerId: string) {
   const enabledHandlers = getStorageValue('enabledHandlers') as
     | string
     | null
